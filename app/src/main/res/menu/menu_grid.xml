@@ -9,4 +9,12 @@
         android:title="@string/action_movietask"
         app:showAsAction="never" />
 
+      <item
+        android:id="@+id/action_tester"
+        android:orderInCategory="98"
+        android:title="@string/action_tester"
+        app:showAsAction="never" />
+
+
+
 </menu>

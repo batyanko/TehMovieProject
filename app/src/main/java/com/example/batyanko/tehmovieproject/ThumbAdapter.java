@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -14,9 +15,10 @@ import java.util.List;
  * Created by Batyanko on 1.3.2016 г..
  */
 public class ThumbAdapter extends ArrayAdapter<Thumb> {
+
     public ThumbAdapter(Activity context, List<Thumb> thumbs){
         super(context, 0, thumbs);
-    };
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -28,9 +30,13 @@ public class ThumbAdapter extends ArrayAdapter<Thumb> {
                     .inflate(R.layout.thumb_movie_list_item, parent, false);
         }
 
-        ImageView iconView = (ImageView) convertView.findViewById(R.id.thumb_item_imageview);
-        iconView.setImageResource(thumb.movieThumb);
+        /*ImageView iconView = (ImageView) convertView.findViewById(R.id.thumb_item_imageview);
+        iconView.setImageResource(thumb.movieThumb);*/
 
+        if (thumb.posterAdress != null) {
+            Picasso.with(getContext()).load(thumb.posterAdress)
+                    .into((ImageView) convertView.findViewById(R.id.thumb_item_imageview));
+        }
         return convertView;
     }
 }
